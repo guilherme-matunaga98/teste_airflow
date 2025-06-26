@@ -31,4 +31,4 @@ with DAG(
     )
 
     task1.set_downstream(task2)
-    task1.set_downstram(task3)
+    task1.set_downstream(task3)
