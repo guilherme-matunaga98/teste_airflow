@@ -14,8 +14,9 @@ with DAG(
     catchup=False,  # Evita execução retroativa desde 2023
     tags=["example"]
 ) as dag:
+    task1 = BashOperator(
+        task_id='first_task',
+        bash_command='echo "Hello, World!"'
+    )
 
-    start = DummyOperator(task_id="start")
-    end = DummyOperator(task_id="end")
-
-    start >> end
+    task1
