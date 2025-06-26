@@ -10,7 +10,7 @@ default_args={
     }
 
 with DAG(
-    dag_id="example_gui",
+    dag_id="example_gui_v2",
     default_args=default_args,
     start_date=datetime(2023, 10, 1),
     schedule_interval="@daily"
@@ -20,4 +20,9 @@ with DAG(
         bash_command='echo "Hello, World!"'
     )
 
-    task1
+    task2 = BashOperator(
+        task_id='second_task',
+        bash_command='echo "This is the second task."'
+    )
+
+    task1.set_downstream(task2)
